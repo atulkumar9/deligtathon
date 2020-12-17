@@ -1,0 +1,90 @@
+body {
+  height: 28000px;
+}
+
+body * {
+  margin: 0;
+  padding: 0;
+}
+
+.background-wrapper {
+  height: 5600px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.sky {
+  height: 600px;
+  width: 100%;
+  background: url('Sky.jpg') 0 0/100% no-repeat;
+}
+
+.skylight {
+  height: 1000px;
+  width: 100%;
+  background: url('Skylight.jpg') 0 0/100% no-repeat;
+}
+
+.twilight {
+  height: 4000px;
+  width: 100%;
+  background: url('Skylight.jpg') 0 0/100% no-repeat;
+}
+
+.rock {
+  height: 200px;
+  padding-top: 100px;
+}
+
+.rock > img {
+  height: 100%;
+}
+
+.custom-scale {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  line-height: 40px;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.custom-scale.fade-in {
+  animation: fade-in ease-in-out 0.3s forwards;
+}
+
+.custom-scale.fade-out {
+  animation: fade-out ease-in-out 0.3s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.wave-animation {
+  height: 140px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
