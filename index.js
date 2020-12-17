@@ -4,8 +4,6 @@ window.requestAnimationFrame = window.requestAnimationFrame
  || window.msRequestAnimationFrame
  || function(f){setTimeout(f, 1000/60)}
 
-// var bgElem = document.getElementById('bg')
-
 function parallaxBackgroundScroll() {
   var bgElem = document.getElementById('background-wrapper');
   var scrolltop = window.pageYOffset;
@@ -25,10 +23,6 @@ const comparisonCorrospondingDepth = {
 }
 
 const getDepthinMeters = (pxValue) => pxValue*OnePxInMeters;
-
-// const inRange = (elem, meter) => {
-//   return meter >= elem && meter > elem + 200
-// };
 
 const isMeterInRange = (start, end) => Object
   .keys(comparisonCorrospondingDepth)
@@ -67,7 +61,6 @@ function measureDepth() {
   }
 
   if(!isInRangeOfExit && isInRange200To300) {
-    console.log('fade out called')
     customScaleElem.classList.add('fade-out');
   }
 
@@ -88,14 +81,15 @@ function measureDepth() {
 
 }
 
-
-lottie.loadAnimation({
-  container: waveAnimationELem, // the dom element that will contain the animation
-  renderer: 'svg',
-  loop: true,
-  autoplay: true,
-  path: 'wave-animation.json'
-});
+window.onload = function() {
+  lottie.loadAnimation({
+    container: document.getElementById('wave-animation'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://assets3.lottiefiles.com/private_files/lf30_fjqhet9e.json'
+  });
+};
 
 window.addEventListener('scroll', function(){ 
   requestAnimationFrame(parallaxBackgroundScroll);
