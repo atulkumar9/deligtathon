@@ -1,0 +1,23 @@
+{
+  "name": "delightathon2020",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "lottie-web": "^5.7.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atulkumar9/deligtathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/atulkumar9/deligtathon/issues"
+  },
+  "homepage": "https://github.com/atulkumar9/deligtathon#readme"
+}

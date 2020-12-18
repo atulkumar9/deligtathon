@@ -1,6 +1,12 @@
 const crabAnimationData = 'https://assets9.lottiefiles.com/private_files/lf30_zn9wvb8m.json';
 const crabAnimationAfterTouchData = 'https://assets9.lottiefiles.com/private_files/lf30_nypms3gx.json';
 const waveAnimationData = 'https://assets3.lottiefiles.com/private_files/lf30_fjqhet9e.json';
+const scrollNudgeData = 'https://assets1.lottiefiles.com/private_files/lf30_immad21w.json';
+const BgScore = 'https://raw.githubusercontent.com/atulkumar9/deligtathon/master/zapsplat_nature_ocean_waves_on_rocks_water_flow_surge_around_rocks_middle_tide_43575.mp3';
+const floatingFishAnimationData = 'https://assets9.lottiefiles.com/private_files/lf30_c0lnd0da.json';
+const floatingFishAnimationOnClickData = 'https://assets4.lottiefiles.com/private_files/lf30_fkhiyjuc.json';
+const squidAnimationData = 'https://assets5.lottiefiles.com/private_files/lf30_qu0nlpg5.json';
+const squidAnimationDataAfterClick = 'https://assets10.lottiefiles.com/private_files/lf30_zyjhp3lk.json';
 
 window.requestAnimationFrame = window.requestAnimationFrame
  || window.mozRequestAnimationFrame
@@ -14,11 +20,6 @@ function parallaxScroll(elem) {
   scrolltop = window.pageYOffset;
   elem.style.top = -scrolltop * OnePxInMeters + 'px';
 }
-
-const audioPlayer = () => {
-
-}
-
 
 const comparisonCorrospondingDepth = {
   1000: 'the height of 11 Statue of Liberties',
@@ -125,9 +126,19 @@ function animationPlayer (container, path) {
 
 document.addEventListener('DOMContentLoaded', () => {
   
+  let backgroundMusic = new Audio(BgScore);
+
   let waveElement = document.getElementById('wave-animation');
   let crabElements = document.getElementsByClassName('crab');
+  let nudgeElement = document.getElementById('scroll-nudge');
+  let floatingFishElements = document.getElementsByClassName('fish');
+  let squidElement = document.getElementById('squid');
+
   let waveAnimation = new animationPlayer(waveElement, waveAnimationData);
+  let nudgeAnimation = new animationPlayer(nudgeElement, scrollNudgeData);
+  let squidAnimation = new animationPlayer(squidElement, squidAnimationData);
+  // let floatingFishAnimation = new animationPlayer(floatingFishElement, floatingFishAnimationData);
+
   let crabsAnimation = [...crabElements].map((elem) => {
     let crabAnim = new animationPlayer(elem, crabAnimationData);
     elem.addEventListener('click', () => {
@@ -141,6 +152,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return crabAnim;
   })
 
+  squidElement.addEventListener('click', () => {
+    squidAnimation.animation.destroy();
+    squidElement.innerHTML = `<p class='creature-name'>Squid</p>`;
+    squidAnimation = new animationPlayer(squidElement, squidAnimationDataAfterClick);
+    setTimeout(() => {
+      squidAnimation.animation.destroy();
+      squidElement.innerHTML = `<p class='creature-name'>Squid</p>`;
+      squidAnimation = new animationPlayer(squidElement, squidAnimationData);
+    }, 3000);
+  })
+
+  let floatingFishAnimation = [...floatingFishElements].map((elem) => {
+    let floatingFishAnim = new animationPlayer(elem, floatingFishAnimationData);
+    elem.addEventListener('click', () => {
+      floatingFishAnim.animation.destroy();
+      floatingFishAnim = new animationPlayer(elem, floatingFishAnimationOnClickData);
+      setTimeout(() => {
+        floatingFishAnim.animation.destroy();
+        floatingFishAnim = new animationPlayer(elem, floatingFishAnimationData);
+      }, 2000);
+    })
+    return floatingFishAnim;
+  })
+
   document.getElementById('back-to-top').addEventListener('click', () => {
     let elem = document.querySelector('html')
     let customScaleElem = document.getElementById('custom-scale');
@@ -150,16 +185,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  var musicControl = document.getElementById('music');
+  musicControl.addEventListener('click', () => {
+    if(musicControl.getAttribute('music') === 'false') {
+      backgroundMusic.play();
+      musicControl.innerHTML = '<p>Music is on</p>';
+      musicControl.setAttribute('music', true);
+      musicControl.classList.add('on');
+    }
+    else {
+      backgroundMusic.pause();
+      musicControl.innerHTML = `<p>Music is off</p>`;
+      musicControl.setAttribute('music', false);
+      musicControl.classList.remove('on');
+    }
+  })
 
 }, false)
 
 window.addEventListener('scroll', () => { 
   let bgElem = document.getElementById('background-wrapper');
+  let nudgeElement = document.getElementById('scroll-nudge');
   requestAnimationFrame(parallaxScroll.bind(this, bgElem));
-  // let crabElements = document.getElementsByClassName('crab');
-  // [...crabElements].map((elem) => {
-  //   requestAnimationFrame(parallaxScroll.bind(this, elem, true));
-  // })
+  if (this.scrollY > 1000) {
+    nudgeElement.style.display = 'none';
+  }
   measureDepth();
   this.oldScroll = this.scrollY;
 }, false)

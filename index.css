@@ -23,6 +23,21 @@ body * {
   position: relative;
 }
 
+.sky h1 {
+  display: inline-block;
+  position: absolute;
+  font-family: "graphie", 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: bolder;
+  font-style: italic;
+  font-size: 260px;
+  line-height: 260px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  color: #d6e2ee;
+  text-shadow: 0px 13px rgb(9, 10, 74, 0.6);
+}
+
 .skylight {
   height: 1000px;
   width: 100%;
@@ -176,9 +191,13 @@ body * {
 }
 
 .controls li.music::after {
-  background: url('music-on.svg') 0 0/100% no-repeat;
+  background: url('music-off.svg') 0 0/100% no-repeat;
   height: 37px;
   width: 35px;
+}
+
+.controls li.music.on::after {
+  background: url('music-on.svg') 0 0/100% no-repeat;
 }
 
 .controls li.back-to-top::after {
@@ -214,7 +233,7 @@ body * {
 }
 
 .squid {
-  background: url('Squid.svg') 0 0/100% no-repeat;
+  /* background: url('Squid.svg') 0 0/100% no-repeat; */
   width: 348.6px;
   height: 618.62px;
   position: absolute;
@@ -301,4 +320,34 @@ body * {
   top: 5800px;
   left: 150px;
   position: absolute;
+}
+
+.scroll-nudge {
+  position: fixed;
+  bottom: 70px;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+.fish {
+  position: absolute;
+  top: 3400px;
+  left: 300px;
+}
+
+.fish2 {
+  top: 4000px;
+  right: 200px;
+  left: unset;
+}
+
+.fish3 {
+  top: 4800px;
+  right: 500px;
+  left: unset;
+}
+
+.fish4 {
+  top: 6300px;
+  left: 200px;
 }
