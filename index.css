@@ -20,6 +20,7 @@ body * {
   height: 600px;
   width: 100%;
   background: url('Sky.jpg') 0 0/100% no-repeat;
+  position: relative;
 }
 
 .skylight {
@@ -39,6 +40,17 @@ body * {
   height: 600px;
   width: 100%;
   background: url('Locked.jpg') 0 0/100% no-repeat;
+  text-align: center;
+}
+
+.locked p {
+  font-size: 40px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 100px;
+  font-family: "graphie", 'Helvetica', 'Arial', 'sans-serif';
 }
 
 .rock {
@@ -52,18 +64,19 @@ body * {
 
 .custom-scale {
   position: fixed;
+  display: inline-block;
   height: 100px;
-  width: 100%;
-  text-align: center;
+  width: 30%;
   font-size: 25px;
   line-height: 25px;
   bottom: 0;
-  left: 0;
+  right: 40px;
   opacity: 0;
   font-family: "graphie", 'Helvetica', 'Arial', 'sans-serif';
-  font-weight: 700;
   color: #fff;
   text-shadow: 0px 1px black;
+  font-weight: 600;
+  text-align: right;
 }
 
 .custom-scale.fade-in {
@@ -114,6 +127,7 @@ body * {
   position: fixed;
   top: -73px;
   left: 960px;
+  z-index: 1;
 }
 
 .controls li {
@@ -129,6 +143,7 @@ body * {
   justify-content: center;
   transition: all 0.3s ease-in-out;
   top: 0;
+  cursor: pointer;
 }
 
 .controls li p {
@@ -170,4 +185,120 @@ body * {
   background: url('arrow.svg') 0 0/100% no-repeat;
   height: 30px;
   width: 35px;
+}
+
+.crab {
+  height: 130px;
+  position: absolute;
+  top: 440px;
+  left: -60px;
+}
+
+.crab.crab2 {
+  top: 240px;
+  left: 100px;
+}
+
+.crab.crab3 {
+  top: 500px;
+  left: 700px;
+}
+
+.beluga-whale {
+  background: url('BelugaWhale.svg') 0 0/100% no-repeat;
+  width: 721.81px;
+  height: 286.18px;
+  position: absolute;
+  top: 4925px;
+  left: 300px;
+}
+
+.squid {
+  background: url('Squid.svg') 0 0/100% no-repeat;
+  width: 348.6px;
+  height: 618.62px;
+  position: absolute;
+  top: 11000px;
+  left: 450px;
+}
+
+.sea-lion {
+  background: url('SeaLion.svg') 0 0/100% no-repeat;
+  width: 710.56px;
+  height: 224.79px;
+  position: absolute;
+  top: 6825px;
+  left: 260px;
+}
+
+.killer-whale {
+  background: url('KillerWhale.svg') 0 0/100% no-repeat;
+  width: 1072.04px;
+  height: 715.81px;
+  position: absolute;
+  top: 9475px;
+  left: 100px;
+}
+
+.creature-name {
+  position: absolute;
+  display: inline-block;
+  color: #fff;
+  font-size: 18px;
+  line-height: 18px;
+  right: -50px;
+  top: -20px;
+  font-family: "graphie", 'Helvetica', 'Arial', 'sans-serif';
+  background: #363566;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.creature-name::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid #52397b;
+  text-shadow: 0px 1px rgba(0,0,0, 0.8);
+}
+
+.crab .creature-name {
+  right: 41px;
+  top: 30px;
+}
+
+.sea-lion .creature-name {
+  bottom: 40px;
+  top: unset;
+  right: unset;
+  left: 40px;
+}
+
+.sea-lion .creature-name::before {
+  left: 100px;
+}
+
+.killer-whale .creature-name {
+  top: 90px;
+  right: 260px;
+}
+
+.squid .creature-name {
+  top: 70px;
+  right: -20px;
+}
+
+.sting-ray {
+  width: 1013px;
+  height: 378px;
+  background: url('StingRay.svg') 0 0/100% no-repeat;
+  top: 5800px;
+  left: 150px;
+  position: absolute;
 }
